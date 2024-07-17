@@ -1,0 +1,26 @@
+.hero{
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url("../../assets/bcg2.jpeg");
+    height: 85vh;
+    background-size: cover;
+    background-position: center;
+    /* margin-top: -30px; */
+
+}
+.hero__container__text{
+    color: #fff;
+    text-align: center;
+    padding-top: 10%;
+
+}
+.hero__container__text h1{
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.hero__container__text p{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-left: 10rem;
+    margin-right: 10rem;
+}

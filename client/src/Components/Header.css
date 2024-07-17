@@ -1,0 +1,45 @@
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PT Sans", sans-serif;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+}
+.header h1{
+    text-transform: capitalize;
+    font-size: 2rem;
+    color: #000;
+
+}
+.cta{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.cta a{
+    text-decoration: none;
+    color: black;
+    background-color: #a88d79;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    transition: .3s ease-in-out;
+
+}
+
+.cta a:hover{
+    background-color: #bea79d;
+    color: #682632;
+}
