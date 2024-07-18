@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
 import bycrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -78,11 +79,18 @@ router.post("/login", async(req, res) => {
             if (matchedPassword){
                 const payload = {
                     id: loginUser.id,
-                    username: loginUser.username,
                     firstname: loginUser.firstname,
                     lastname: loginUser.lastname,
                     email: loginUser.email
                 }
+                const token = jwt.sign(payload, process.env.JWT_SECRET, {
+                    expiresIn: "1h"
+                })
+                res.cookie("access_token", token)
+                return res.status(200).json({success:true, message: "login successful", data:payload})
+                
+            }else{
+                res.status(400).json({success:false, message:"wrong user credentials"})
             }
         }
     } catch (error) {
