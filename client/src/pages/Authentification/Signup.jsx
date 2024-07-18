@@ -1,6 +1,35 @@
 import {useFormik} from 'formik'
+import {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+const apiurl = import.meta.env.VITE_API_URL_ROOT;
 
 const Signup = () =>{
+    const [error, setError] = useState(false)
+    const navigate = useNavigate()
+
+    const handleSubmit = async (formState) =>{
+        try {
+            const response = await fetch(`${apiurl}/api/users/register`,{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(formState)
+            })
+            const data = await response.json()
+            console.log(data);
+            if(data.success === true){
+                navigate('/signin')
+        
+            }else{
+                setError(response.message)
+            }
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+
+
     const formik = useFormik({
         initialValues: {
             username:'',
@@ -10,9 +39,7 @@ const Signup = () =>{
             password: '',
             confirmPassword: ''
             },
-            onSubmit: (formState) => {
-                console.log(formState);
-            }
+            onSubmit: handleSubmit
     })
     return(
         <section>
@@ -48,6 +75,12 @@ const Signup = () =>{
                 <div className="form-items">
                     <button type='submit'>sign up</button>
                 </div>
+                <p className="form-text">
+                    already have an account? <Link to="/signin">sign in</Link>
+                </p>
+                <p className="errMsg">
+                    {error&&error}
+                </p>
                 
             </form>
         </section>
