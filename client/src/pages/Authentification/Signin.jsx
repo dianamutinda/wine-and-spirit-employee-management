@@ -11,7 +11,7 @@ const Signin = () =>{
         }
 
     })
-    console.log(formik.values);
+    // console.log(formik.values);
 
     return(
         <section>
