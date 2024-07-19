@@ -1,0 +1,14 @@
+.admin{
+    display: flex;
+
+}
+.menu{
+    width: 20%;
+    height: 85vh;
+    background-color: #74726f;
+    border-right: 1px solid black;
+}
+.content{
+    width: 80%;
+    background-color: #d1bcb3;
+}

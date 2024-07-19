@@ -18,7 +18,7 @@ const Signin = () =>{
             })
             const data = await response.json()
             if(data.success === true){
-                navigate("/")
+                navigate("/admin/approve")
             }else{
                 setError(response.message)
             }

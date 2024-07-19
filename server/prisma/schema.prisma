@@ -18,6 +18,7 @@ model user{
   firstname String
   lastname String
   email String @unique
+  role String?
   password String
 
   @@map("users_table")
