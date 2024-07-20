@@ -12,3 +12,11 @@
     width: 80%;
     background-color: #d1bcb3;
 }
+
+.card{
+    background-color: #fcd1bf;
+    width: 18rem;
+    margin: 10px;
+    text-align: left;
+    padding:1rem 2rem;
+}

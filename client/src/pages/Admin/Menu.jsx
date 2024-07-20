@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const Menu = () => {
     return (
         <section>
-            <div className="meni-items">
+            <div className="menu-items">
                 <div className="menu-item">
                 <Link to={"/admin/approve"}>approve accounts</Link>
                 </div>
