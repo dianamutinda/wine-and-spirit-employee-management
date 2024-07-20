@@ -19,9 +19,11 @@ model user{
   lastname String
   email String @unique
   avatarUrl String?
-  role String?
+  role String? @default("user")
   password String
-  approvedAccount Boolean @default(false)
+  approvedAccount Boolean? @default(false)
+  createdAt DateTime @default(now())
+ 
 
   @@map("users_table")
 }

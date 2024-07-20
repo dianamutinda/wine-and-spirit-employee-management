@@ -1,59 +1,59 @@
 import {useFormik} from 'formik'
-// import {useEffect, useState} from 'react'
-// import {useNavigate} from 'react-router-dom'
-// import { Link } from 'react-router-dom';
+import {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-// const apiurl = import.meta.env.VITE_API_URL_ROOT;
+const apiurl = import.meta.env.VITE_API_URL_ROOT;
 
 const Employee = () =>{
-    const formik = useFormik({
-            initialValues: {
-                username:'',
-                firstname:'',
-                lastname:'',
-                email: '',
-                password: '',
-                confirmPassword: ''
-                },
-                onSubmit: (formState) => {
-                    console.log(formState);
-                }
-        })
-    // const [error, setError] = useState(false)
-    // const navigate = useNavigate()
-
-    // const handleSubmit = async (formState) =>{
-    //     try {
-    //         const response = await fetch(`${apiurl}/api/users/register`,{
-    //             method: 'POST',
-    //             headers: {'Content-Type': 'application/json'},
-    //             body: JSON.stringify(formState)
-    //         })
-    //         const data = await response.json()
-    //         console.log(data);
-    //         if(data.success === true){
-    //             navigate('/signin')
-        
-    //         }else{
-    //             setError(response.message)
-    //         }
-    //     } catch (error) {
-    //         setError(error.message)
-    //     }
-    // }
-
-
     // const formik = useFormik({
-    //     initialValues: {
-    //         username:'',
-    //         firstname:'',
-    //         lastname:'',
-    //         email: '',
-    //         password: '',
-    //         confirmPassword: ''
-    //         },
-    //         onSubmit: handleSubmit
-    // })
+    //         initialValues: {
+    //             username:'',
+    //             firstname:'',
+    //             lastname:'',
+    //             email: '',
+    //             password: '',
+    //             confirmPassword: ''
+    //             },
+    //             onSubmit: (formState) => {
+    //                 console.log(formState);
+    //             }
+    //     })
+    const [error, setError] = useState(false)
+    const navigate = useNavigate()
+
+    const handleSubmit = async (formState) =>{
+        try {
+            const response = await fetch(`${apiurl}/api/users/unapproved`,{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(formState)
+            })
+            const data = await response.json()
+            console.log(data);
+            if(data.success === true){
+                navigate('/')
+        
+            }else{
+                setError(response.message)
+            }
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+
+
+    const formik = useFormik({
+        initialValues: {
+            username:'',
+            firstname:'',
+            lastname:'',
+            email: '',
+            password: '',
+            confirmPassword: ''
+            },
+            onSubmit: handleSubmit
+    })
     return(
         <section>
             <h1>New Employee</h1>
@@ -91,9 +91,9 @@ const Employee = () =>{
                 {/* <p className="form-text">
                     already have an account? <Link to="/signin">sign in</Link>
                 </p> */}
-                {/* <p className="errMsg">
+                <p className="errMsg">
                     {error&&error}
-                </p> */}
+                </p>
                 
             </form>
         </section>
