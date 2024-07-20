@@ -5,7 +5,7 @@ import bycrypt from 'bcrypt'
 const prisma = new PrismaClient();
 
 export const requestAccount = async (req, res) => {
-    const { username, firstname, lastname, email, password, role } = req.body;
+    const { username, firstname, lastname, email, password,role,approvedAccount } = req.body;
   try {
     if (!username)
       return res
@@ -50,6 +50,8 @@ export const requestAccount = async (req, res) => {
         firstname,
         lastname,
         email,
+        role,
+        approvedAccount,
         password: hashedPassword
       }
     });
