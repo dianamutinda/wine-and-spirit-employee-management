@@ -18,8 +18,10 @@ model user{
   firstname String
   lastname String
   email String @unique
+  avatarUrl String?
   role String?
   password String
+  approvedAccount Boolean @default(false)
 
   @@map("users_table")
 }
