@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
 
 const UserStore = (set) => ({
   users: [],
@@ -9,5 +10,5 @@ const UserStore = (set) => ({
     });
   },
 });
-export const useUserStore = create(UserStore)
+export const useUserStore = create(devtools(persist(UserStore, {name: "An employee"})))
 export default useUserStore

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
-import { requestAccount } from "../controllers/users.contollers.js";
+import { requestAccount, getAllUsers } from "../controllers/users.contollers.js";
+import verifyAdmin from "../middleware/verifyAdmin.js";
 import bycrypt from 'bcrypt'
 
 
@@ -69,4 +70,5 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/unapproved", requestAccount)
+router.get("/allUsers",verifyAdmin, getAllUsers)
 export default router;
