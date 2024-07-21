@@ -22,7 +22,8 @@ export const login = async (req, res) =>{
                     id: loginUser.id,
                     firstname: loginUser.firstname,
                     lastname: loginUser.lastname,
-                    email: loginUser.email
+                    email: loginUser.email,
+                    role:loginUser.role
                 }
                 const token = jwt.sign(payload, process.env.JWT_SECRET, {
                     expiresIn: "1h"
@@ -37,5 +38,6 @@ export const login = async (req, res) =>{
         
     } catch (error) {
         res.status(500).json({success:false, message:error.message})
-    }
-}
+    }finally {
+    await prisma.$disconnect(); // Disconnect Prisma client
+}}
