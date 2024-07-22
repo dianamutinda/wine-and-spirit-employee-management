@@ -1,39 +1,29 @@
 import "./Admin.css"
 import Menu from "./Menu"
-import useEmployeesStore from "../../Store/EmployeesStore"
-
+import { useState, useEffect } from "react"
+const apiurl = import.meta.env.VITE_API_URL_ROOT;
 const Approve = () =>{
-    const captureEmployee = useEmployeesStore((state) => state.captureEmployee)
-    const employees = useEmployeesStore((state) => state.employees)
- 
-    const unapprovedEmployees = [
-        {
-            name: "Diana",
-            userName: "diana123",
-            email: "diana@gmail.com"
-        },
-        {
-            name: "Diana",
-            userName: "diana123",
-            email: "diana@gmail.com"
-        },
-        {
-            name: "Diana",
-            userName: "diana123",
-            email: "diana@gmail.com"
-        },
-        {
-            name: "Diana",
-            userName: "diana123",
-            email: "diana@gmail.com"
-        }
-    ]
+    
+    const [error, setError] = useState(false)
+    const [requests, setRequests] = useState([])
 
-    const handleApprove = (employee) => {
-        // console.log(employee)
-        captureEmployee(employee)
-        console.log(employees)
+    const fetchRequest = async() =>{
+        const response = await fetch(`${apiurl}/api/users/unapproved`,{
+            credentials:"include"
+        }
+        )
+        const data = await response.json()
+        console.log(data);
+        if(data.success === true){
+            setRequests(data.data)
+        }else{
+            setError(error)
+        }
     }
+    useEffect(() => {
+        fetchRequest()
+        }, [])
+    
 
     return(
         
@@ -42,13 +32,13 @@ const Approve = () =>{
             <div className="content">
                 <h1>Approve new employees</h1>
                 {
-                    unapprovedEmployees.map((employee, i) =>(
+                    requests.map((request, i) =>(
                         <div className="card-container">
                     <div className="card" key={i}>
-                        <h2><span className="subtittle">name:</span> {employee.name}</h2>
-                        <h3><span className="subtittle">username:</span>{employee.userName}</h3>
-                        <h3><span className="subtittle">email address:</span>{employee.email}</h3>
-                        <button className="accept" onClick={()=> handleApprove(employee)}>accept</button>
+                        <h2><span className="subtittle">name:</span> {request.firstname} {request.lastname}</h2>
+                        <h3><span className="subtittle">username:</span>{request.username}</h3>
+                        <h3><span className="subtittle">email address:</span>{request.email}</h3>
+                        <button className="accept" >accept</button>
                         <button className="reject">reject</button>
                     </div>
                 </div>
