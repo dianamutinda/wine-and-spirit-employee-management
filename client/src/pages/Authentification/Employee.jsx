@@ -24,7 +24,7 @@ const Employee = () =>{
 
     const handleSubmit = async (formState) =>{
         try {
-            const response = await fetch(`${apiurl}/api/users/unapproved`,{
+            const response = await fetch(`${apiurl}/api/users/request`,{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(formState)
@@ -32,7 +32,7 @@ const Employee = () =>{
             const data = await response.json()
             console.log(data);
             if(data.success === true){
-                navigate('/')
+                navigate('/admin/approve')
         
             }else{
                 setError(response.message)

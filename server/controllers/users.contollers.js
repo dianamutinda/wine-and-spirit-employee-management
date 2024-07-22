@@ -84,3 +84,21 @@ export const getAllUsers = async(req, res) => {
     res.status(500).json({success: false, message: error.message})
   }
 }
+
+export const getAllUnapprovedEmployees = async(req, res) =>{
+  try {
+    const users = await prisma.user.findMany({
+      where: { approvedAccount: false },
+      select:{
+        username: true,
+        firstname: true,
+        lastname:true,
+        email:true,
+
+      }
+    })
+    res.status(200).json({success:true, data: users})
+  } catch (error) {
+    res.status(500).json({success: false, message:error.message})
+  }
+}
