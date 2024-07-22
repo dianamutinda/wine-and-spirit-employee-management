@@ -21,6 +21,7 @@ const Signin = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formState),
+                credentials: "include"
             });
 
             if (!response.ok) {
@@ -33,7 +34,7 @@ const Signin = () => {
 
             if (data.success === true) {
                 if (data.data.role === 'admin'){
-                    navigate('/admin/approve');
+                    navigate('/admin');
                 }else{
                     navigate('/');
                 }

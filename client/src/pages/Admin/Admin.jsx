@@ -1,8 +1,15 @@
-import Approve from "./Approve"
+import Menu from "./Menu"
 const Admin = () =>{
     return(
         <>
-        <Route path="/admin/approve" element={<Approve/>}/>
+        <section>
+            <div className="admin">
+                <Menu/>
+                <div className="admin-content">
+                    <h1>Admin</h1>
+                </div>
+            </div>
+        </section>
         </>
     )
 }

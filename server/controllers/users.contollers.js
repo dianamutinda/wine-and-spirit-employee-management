@@ -70,7 +70,14 @@ export const requestAccount = async (req, res) => {
 export const getAllUsers = async(req, res) => {
   try {
     const users = await prisma.user.findMany({
-      where: { approvedAccount: true }
+      where: { approvedAccount: true },
+      select:{
+        username: true,
+        firstname: true,
+        lastname:true,
+        email:true,
+
+      }
     })
     res.status(200).json({success:true, data: users})
   } catch (error) {
