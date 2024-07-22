@@ -6,7 +6,7 @@ const Sales = () =>{
     return(
         
         <section className="admin">
-            <Menu/>
+            <div className="menu"><Menu/></div>
             <div className="content">
                 <p>Sales</p>
             </div>

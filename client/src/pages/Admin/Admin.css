@@ -8,9 +8,47 @@
     background-color: #74726f;
     border-right: 1px solid black;
 }
+.menu-items{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* align-items: center;
+    justify-content: center; */
+    margin-top: 2rem;
+}
+.menu-item{
+    
+}
+.item{
+    text-decoration: none;
+    background-color: whitesmoke;
+    padding: 6px;
+    width: 20rem;
+    text-transform: capitalize;
+    color: black;
+
+}
 .content{
     width: 80%;
     background-color: #d1bcb3;
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+.content-items{
+    display: flex;
+    flex-wrap: wrap;
+}
+.content form{
+    width: 30rem ;
+    border: 1px solid ;
+    display: grid;
+    place-content: center;
+
+}
+.items{
+    display: flex;
+    flex-direction: column;
+
 }
 
 .card{
@@ -19,4 +57,7 @@
     margin: 10px;
     text-align: left;
     padding:1rem 2rem;
+}
+.subtittle{
+    font-size: 1rem;
 }

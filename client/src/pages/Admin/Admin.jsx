@@ -4,7 +4,7 @@ const Admin = () =>{
         <>
         <section>
             <div className="admin">
-                <Menu/>
+            <div className="menu"><Menu/></div>
                 <div className="admin-content">
                     <h1>Admin</h1>
                 </div>

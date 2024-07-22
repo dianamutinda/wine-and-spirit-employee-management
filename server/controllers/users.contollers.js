@@ -116,3 +116,16 @@ export const approveEmployee = async(req, res) =>{
     res.status(500).json({success:false, message:error.message})
   }
 }
+
+export const rejectEmployee = async(req, res) => {
+  const employeeId = req.params.id
+  try {
+    const rejectEmployee = await prisma.user.delete({
+      where: { id: employeeId },
+      // data: { approvedAccount: false }
+    })
+    res.status(200).json({success:true, message:"Account rejected successully"})
+  } catch (error) {
+    res.status(500).json({success:false, message:error.message})
+  }
+}

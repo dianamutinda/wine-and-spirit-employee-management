@@ -122,9 +122,10 @@ const Approve = () => {
 
     return (
         <section className="admin">
-            <Menu />
+            <div className="menu"><Menu/></div>
             <div className="content">
                 <h1>Approve new employees</h1>
+                <div className="content-items">
                 {requests.map((request, index) => (
                     <RequestCard
                         key={index}
@@ -133,6 +134,7 @@ const Approve = () => {
                     />
                 ))}
                 {error && <p className="error-message">Error: {error}</p>}
+                </div>
             </div>
         </section>
     );

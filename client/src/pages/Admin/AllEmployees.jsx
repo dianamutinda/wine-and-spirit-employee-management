@@ -37,7 +37,7 @@ const AllEmployees = () =>{
     return(
         
         <section className="admin">
-            <Menu/>
+            <div className="menu"><Menu/></div>
             <div className="content">
                 <h1>All employees</h1>
                 {

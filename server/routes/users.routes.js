@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
-import { requestAccount, getAllUsers, getAllUnapprovedEmployees,approveEmployee } from "../controllers/users.contollers.js";
+import { requestAccount, getAllUsers, getAllUnapprovedEmployees,approveEmployee, rejectEmployee } from "../controllers/users.contollers.js";
 import verifyAdmin from "../middleware/verifyAdmin.js";
 import bycrypt from 'bcrypt'
 
@@ -73,5 +73,6 @@ router.post("/request", requestAccount)
 router.get("/allUsers",verifyAdmin, getAllUsers)
 router.get("/unapproved",verifyAdmin, getAllUnapprovedEmployees)
 router.patch("/approve/:id",verifyAdmin, approveEmployee)
+router.delete("/reject/:id",verifyAdmin, rejectEmployee )
 
 export default router;
