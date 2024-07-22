@@ -90,6 +90,7 @@ export const getAllUnapprovedEmployees = async(req, res) =>{
     const users = await prisma.user.findMany({
       where: { approvedAccount: false },
       select:{
+        id:true,
         username: true,
         firstname: true,
         lastname:true,
@@ -100,5 +101,18 @@ export const getAllUnapprovedEmployees = async(req, res) =>{
     res.status(200).json({success:true, data: users})
   } catch (error) {
     res.status(500).json({success: false, message:error.message})
+  }
+}
+
+export const approveEmployee = async(req, res) =>{
+  const employeeId = req.params.id
+  try {
+    const upprovedEmployee = await prisma.user.update({
+      where: { id: employeeId },
+      data: { approvedAccount: true }
+    })
+    res.status(200).json({success:true, message:"Account approved successully"})
+  } catch (error) {
+    res.status(500).json({success:false, message:error.message})
   }
 }
