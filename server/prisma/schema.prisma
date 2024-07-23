@@ -45,8 +45,9 @@ model order{
   itemname String
   ordereditems Int
   price Int
-  itemId String
-  item item @relation(fields: [itemId], references: [itemId])
+  // itemId String
+  userId String
+  item item @relation(fields: [userId], references: [itemId])
 
   @@map("orders_table")
 }

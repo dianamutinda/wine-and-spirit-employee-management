@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useUserStore from '../../Store/UserStore';
 import { Link } from 'react-router-dom';
+import './Authentification.css'
 
 const apiurl = import.meta.env.VITE_API_URL_ROOT;
 
@@ -56,8 +57,9 @@ const Signin = () => {
 
     return (
         <section>
-            <h1>Signin</h1>
-            <form onSubmit={formik.handleSubmit}>
+            
+            <form onSubmit={formik.handleSubmit} className='form'>
+            <h1>Sign in here</h1>
                 <div className="form-items">
                     <label htmlFor="username">Username</label>
                     <input
@@ -79,7 +81,7 @@ const Signin = () => {
                     />
                 </div>
                 <div className="form-items">
-                    <button type="submit">Signin</button>
+                    <button type="submit">Sign in</button>
                 </div>
                 <p className="form-text">
                     Don't have an account? <Link to="/signup">Sign up</Link>

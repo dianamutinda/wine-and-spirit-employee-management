@@ -6,6 +6,7 @@ const verifyToken = (req, res, next) => {
     if (error) return res.status(401).json({success:false, message: "Unauthorized"})
     if(!decoded.role === 'admin') return res.status(401).json({ success:false, message: "You are not permitted to perform this operation"})
     req.user = decoded;
+    // req.item = decoded;
     next();
     })
 }

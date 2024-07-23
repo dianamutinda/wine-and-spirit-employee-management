@@ -2,6 +2,7 @@ import express from "express";
 import userRoutes from "./routes/users.routes.js";
 import authRoutes from "./routes/auth.users.js";
 import itemRoutes from "./routes/items.routes.js";
+import orderRoutes from "./routes/orders.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { config } from "dotenv";
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/items", itemRoutes);
+app.use("/api/orders", orderRoutes);
 app.listen(3000, (req, res) => {
   console.log("Server is running on port 3000");
 });

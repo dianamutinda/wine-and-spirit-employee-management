@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './Employee.css'
 const apiurl = import.meta.env.VITE_API_URL_ROOT;
 
 const Items = () => {
@@ -29,21 +30,26 @@ const Items = () => {
   return (
     <section>
       <h1>Items</h1>
+      <div className="item-container">
       {
         items.map((item, i) => (
-            <div className="item-container">
+            
         <div className="item" key={i}>
-          <img src={item.imageurl} alt="" />
+          
           <div className="item-content">
+          <div className="image">
+          <img src={item.imageurl} alt="" />
+          </div>
             <h3>{item.itemname}</h3>
             <h3>{item.price}</h3>
             <p>{item.description}</p>
             <button type="submit">order</button>
           </div>
         </div>
-      </div>
+      
         ))
       }
+      </div>
       {error && <p className="errMsg">{error}</p>}
     </section>
   );
