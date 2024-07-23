@@ -16,6 +16,9 @@ const Menu = () => {
                 <div className="menu-item">
                     <Link to={"/admin/add"} className="item">add items to menu</Link>
                 </div>
+                <div className="cta">
+                <Link to={"/"}>sign out</Link>
+            </div>
             </div>
         </section>
     )

@@ -23,7 +23,7 @@ model user{
   password String
   approvedAccount Boolean? @default(false)
   createdAt DateTime @default(now())
-  // items item
+  items item[]
  
 
   @@map("users_table")
@@ -34,7 +34,7 @@ model item{
   price Int
   description String
   userId String
-  // users user @relation({fields: [userId], references: [id]})
+  user user @relation(fields: [userId], references: [id])
 
   @@map("items_table")
 }

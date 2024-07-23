@@ -120,6 +120,30 @@ const Approve = () => {
         }
     };
 
+    const rejectEmployee = async (id) => {
+        try {
+            const response = await fetch(`${apiurl}/api/users/reject/${id}`, {
+                method: "DELETE",
+                credentials: "include"
+            });
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
+            if (data.success) {
+                setRequests(requests.map(request => {
+                    if (request.id === id) {
+                        return data.data.message; 
+                    }
+                    return request;
+                }));
+            } else {
+                setError(data.message);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
     return (
         <section className="admin">
             <div className="menu"><Menu/></div>
@@ -131,6 +155,7 @@ const Approve = () => {
                         key={index}
                         request={request}
                         updateEmployee={() => updateEmployee(request.id)}
+                        rejectEmployee={() => rejectEmployee(request.id)}
                     />
                 ))}
                 {error && <p className="error-message">Error: {error}</p>}
@@ -140,7 +165,7 @@ const Approve = () => {
     );
 };
 
-const RequestCard = ({ request, updateEmployee }) => {
+const RequestCard = ({ request, updateEmployee, rejectEmployee }) => {
     return (
         <div className="card-container">
             <div className="card">
@@ -148,7 +173,7 @@ const RequestCard = ({ request, updateEmployee }) => {
                 <h3><span className="subtittle">Username:</span> {request.username}</h3>
                 <h3><span className="subtittle">Email Address:</span> {request.email}</h3>
                 <button className="accept" onClick={updateEmployee}>Accept</button>
-                <button className="reject">Reject</button>
+                <button className="reject" onClick={rejectEmployee}>Reject</button>
             </div>
         </div>
     );

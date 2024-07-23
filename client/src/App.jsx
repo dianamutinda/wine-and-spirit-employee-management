@@ -8,6 +8,7 @@ import AllEmployees from "./pages/Admin/AllEmployees"
 import Approve from "./pages/Admin/Approve"
 import Sales from "./pages/Admin/Sales"
 import AddItems from "./pages/Admin/AddItems"
+import Employees from "./pages/Employee/Employee"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import React from "react"
 
@@ -28,6 +29,9 @@ function App() {
       <Route path="/admin/approve" element={<Approve/>}/>
       <Route path="/admin/sales" element={<Sales/>}/>
       <Route path="/admin/add" element={<AddItems/>}/>
+      <Route path="/admin/add" element={<AddItems/>}/>
+      <Route path="/employee" element={<Employees/>}/>
+
 
     </Routes>
     

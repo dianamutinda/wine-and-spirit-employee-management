@@ -36,7 +36,7 @@ const Signin = () => {
                 if (data.data.role === 'admin'){
                     navigate('/admin');
                 }else{
-                    navigate('/');
+                    navigate('/employee');
                 }
             } else {
                 setError(data.message);
