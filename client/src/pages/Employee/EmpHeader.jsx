@@ -4,13 +4,13 @@ const EmpHeader = () => {
     <section>
       <div className="cta-items">
         <div className="cta">
-          <Link to={"/employee/empprofile"}>employee profile</Link>
+          <Link to={"/employee/profile"}>employee profile</Link>
         </div>
         <div className="cta">
           <Link to={"/employee/orders"}>orders table</Link>
         </div>
         <div className="cta">
-          <Link to={"/employee/empsales"}>employee sales</Link>
+          <Link to={"/employee/sales"}>employee sales</Link>
         </div>
         <div className="cta">
           <Link to={"/"}>sign out</Link>

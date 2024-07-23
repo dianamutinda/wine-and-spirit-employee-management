@@ -1,8 +1,10 @@
 import EmpHeader from "./EmpHeader"
+
 const Employees = () =>{
     return(
         <>
         <EmpHeader />
+    
         </>
     )
 }

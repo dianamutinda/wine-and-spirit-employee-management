@@ -31,6 +31,7 @@ model user{
 model item{
   itemId String @id @default(uuid())
   itemname String
+  imageurl String
   price Int
   description String
   userId String
