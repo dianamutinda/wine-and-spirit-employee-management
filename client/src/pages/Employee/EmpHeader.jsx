@@ -13,6 +13,9 @@ const EmpHeader = () => {
           <Link to={"/employee/sales"}>employee sales</Link>
         </div>
         <div className="cta">
+          <Link to={"/employee/items"}>menu items</Link>
+        </div>
+        <div className="cta">
           <Link to={"/"}>sign out</Link>
         </div>
       </div>

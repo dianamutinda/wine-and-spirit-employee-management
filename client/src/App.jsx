@@ -12,6 +12,7 @@ import Employees from "./pages/Employee/Employee"
 import Orders from "./pages/Employee/Orders"
 import EmpProfile from "./pages/Employee/EmpProfile"
 import EmpSales from "./pages/Employee/EmployeeSales"
+import Items from "./pages/Employee/Items"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import React from "react"
 
@@ -37,6 +38,7 @@ function App() {
       <Route path="/employee/orders" element={<Orders/>}/>
       <Route path="/employee/profile" element={<EmpProfile/>}/>
       <Route path="/employee/sales" element={<EmpSales/>}/>
+      <Route path="/employee/items" element={<Items/>}/>
 
 
 
