@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 export const addItems = async (req, res) =>{
     const user = req.user
+    console.log(user);
     const userId = user.id
     const {itemname, price, description, imageurl} = req.body;
     try {

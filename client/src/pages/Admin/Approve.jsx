@@ -106,12 +106,8 @@ const Approve = () => {
             const data = await response.json();
             console.log(data);
             if (data.success) {
-                setRequests(requests.map(request => {
-                    if (request.id === id) {
-                        return data.data.message; 
-                    }
-                    return request;
-                }));
+                setRequests(requests.filter(request => request.id !== id))
+                
             } else {
                 setError(data.message);
             }
@@ -129,18 +125,14 @@ const Approve = () => {
             console.log(response);
             const data = await response.json();
             console.log(data);
-            if (data.success) {
-                setRequests(requests.map(request => {
-                    if (request.id === id) {
-                        return data.data.message; 
-                    }
-                    return request;
-                }));
+            if (data.success === true) {
+                setRequests(requests.filter(request => request.id !== id))
+               
             } else {
-                setError(data.message);
+                setError(error);
             }
         } catch (error) {
-            setError(error.message);
+            setError(error);
         }
     };
 

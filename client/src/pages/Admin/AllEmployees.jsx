@@ -28,7 +28,7 @@ const AllEmployees = () =>{
                   }
     
             } catch (error) {
-                setError(error.message)
+                setError(error)
             }
         }
         fetchData()
