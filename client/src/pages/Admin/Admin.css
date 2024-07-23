@@ -4,7 +4,7 @@
 }
 .menu{
     width: 20%;
-    height: 85vh;
+    min-height: 85vh;
     background-color: #74726f;
     border-right: 1px solid black;
 }
@@ -12,12 +12,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    /* align-items: center;
-    justify-content: center; */
     margin-top: 2rem;
-}
-.menu-item{
-    
 }
 .item{
     text-decoration: none;
@@ -28,11 +23,22 @@
     color: black;
 
 }
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5rem;
+}
 .content{
     width: 80%;
     background-color: #d1bcb3;
     /* display: flex;
     flex-wrap: wrap; */
+}
+.content h1{
+    font-size: 2rem;
+    text-transform: capitalize;
+    display: grid;
+    place-content: center;
 }
 .content-items{
     display: flex;
@@ -92,12 +98,31 @@
     background-color:#ceb2a6 ;
 }
 .card{
-    background-color: #fcd1bf;
-    width: 18rem;
+    background-color: #682632;
+    width: 16rem;
     margin: 10px;
     text-align: left;
-    padding:1rem 2rem;
+    padding:.5rem 1rem;
+    border-radius: 10px;
+    color: whitesmoke;
+}
+.card h2{
+    text-transform: capitalize;
 }
 .subtittle{
-    font-size: 1rem;
+    text-transform: capitalize;
+}
+.card button{
+    padding: 8px;
+    width: 5rem;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    background-color:#bea79d ;
+    transition: .3s ease-in-out;
+}
+.card button:hover{
+    background-color:#ceb2a6 ;
 }

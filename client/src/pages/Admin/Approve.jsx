@@ -163,7 +163,7 @@ const RequestCard = ({ request, updateEmployee, rejectEmployee }) => {
             <div className="card">
                 <h2><span className="subtittle">Name:</span> {request.firstname} {request.lastname}</h2>
                 <h3><span className="subtittle">Username:</span> {request.username}</h3>
-                <h3><span className="subtittle">Email Address:</span> {request.email}</h3>
+                <h3><span className="subtittle">Email:</span> {request.email}</h3>
                 <button className="accept" onClick={updateEmployee}>Accept</button>
                 <button className="reject" onClick={rejectEmployee}>Reject</button>
             </div>

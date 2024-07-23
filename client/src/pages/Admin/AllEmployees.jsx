@@ -39,19 +39,21 @@ const AllEmployees = () =>{
         <section className="admin">
             <div className="menu"><Menu/></div>
             <div className="content">
-                <h1>All employees</h1>
+                <h1>All approved employees</h1>
+                <div className="card-container">
                 {
                     employees.map((employee, i) =>(
-                        <div className="card-container">
+                        
                     <div className="card" key={i}>
                         <h2><span className="subtittle">name:</span> {employee.firstname} {employee.lastname}</h2>
                         <h3><span className="subtittle">username:</span>{employee.username}</h3>
-                        <h3><span className="subtittle">email address:</span>{employee.email}</h3>
+                        <h3><span className="subtittle">email:</span>{employee.email}</h3>
                         <button className="reject">delete</button>
                     </div>
-                </div>
+                
                     ))
                 }
+                </div>
                 {error && <p className="errMsg">{error}</p>}
             </div>
         </section>
