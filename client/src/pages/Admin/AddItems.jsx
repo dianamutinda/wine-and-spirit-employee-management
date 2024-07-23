@@ -71,8 +71,8 @@ const AddItems = () => {
       </div>
       <div className="content">
         <h3>{message}</h3>
-        <form onSubmit={formik.handleSubmit}>
-          <div className="image">
+        <form onSubmit={formik.handleSubmit} className="add-form">
+          <div className="items">
             <input
               type="file"
               name="image"
@@ -112,7 +112,7 @@ const AddItems = () => {
               onChange={formik.handleChange}
             />
           </div>
-          <div className="sumit">
+          <div className="submit">
             <button type="submit">add item</button>
           </div>
           {error && <p className="error-message">Error: {error}</p>}
