@@ -25,3 +25,20 @@ export const addItems = async (req, res) =>{
 
 
 }
+
+export const getItems = async(req, res) =>{
+    try {
+        const items = await prisma.item.findMany({
+            select:{
+                itemname:true,
+                price:true,
+                description:true,
+                imageurl:true,
+
+            }
+        })
+        res.status(200).json({success:true, data:items})
+    } catch (error) {
+        res.status(500).json({success:false, message:error.message})
+    }
+}

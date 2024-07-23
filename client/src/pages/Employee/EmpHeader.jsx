@@ -4,12 +4,6 @@ const EmpHeader = () => {
     <section>
       <div className="cta-items">
         <div className="cta">
-          <Link to={"/employee/profile"}>employee profile</Link>
-        </div>
-        <div className="cta">
-          <Link to={"/employee/orders"}>orders table</Link>
-        </div>
-        <div className="cta">
           <Link to={"/employee/sales"}>employee sales</Link>
         </div>
         <div className="cta">
