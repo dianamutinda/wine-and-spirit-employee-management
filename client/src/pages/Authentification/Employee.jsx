@@ -56,8 +56,9 @@ const Employee = () =>{
     })
     return(
         <section>
-            <h1>New Employee</h1>
-            <form onSubmit={formik.handleSubmit}>
+            
+            <form onSubmit={formik.handleSubmit} className='form'>
+            <h1>register New Employee</h1>
                 <div className="form-items">
                     <label htmlFor="username">Username</label>
                     <input type="text" id="username" name='username' value={formik.values.username} onChange={formik.handleChange}/>
