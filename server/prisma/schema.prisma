@@ -36,6 +36,17 @@ model item{
   description String
   userId String
   user user @relation(fields: [userId], references: [id])
+  orders order[]
 
   @@map("items_table")
+}
+model order{
+  orderId String @id @default(uuid())
+  itemname String
+  ordereditems Int
+  price Int
+  itemId String
+  item item @relation(fields: [itemId], references: [itemId])
+
+  @@map("orders_table")
 }

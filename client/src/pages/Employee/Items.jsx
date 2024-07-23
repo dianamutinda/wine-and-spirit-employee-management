@@ -38,6 +38,7 @@ const Items = () => {
             <h3>{item.itemname}</h3>
             <h3>{item.price}</h3>
             <p>{item.description}</p>
+            <button type="submit">order</button>
           </div>
         </div>
       </div>
