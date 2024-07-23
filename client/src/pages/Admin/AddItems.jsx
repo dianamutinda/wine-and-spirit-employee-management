@@ -28,14 +28,14 @@ const AddItems = () =>{
         payload.append("upload_preset", preset)
         console.log(imageInput);
         try {
-            
+
             
             try {
                 const response = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, payload)
-            // console.log(response.data.secure_url);
-            // const secure_url = response.data.secure_url
-            // const imageUrl = secure_url.replace("/upload", "/upload/w_300/f_auto/")
-            // console.log(imageUrl);
+            console.log(response.data.secure_url);
+            const secure_url = response.data.secure_url
+            const imageUrl = secure_url.replace("/upload", "/upload/w_300/f_auto/")
+            console.log(imageUrl);
                 
             } catch (error) {
                 setError(error)

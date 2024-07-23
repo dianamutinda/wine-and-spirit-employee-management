@@ -21,5 +21,7 @@ const validateItems = (req, res, next) =>{
     } catch (error) {
         res.status(500).json({success:true, message:error.message})
     }
+
+    next()
 }
 export default validateItems

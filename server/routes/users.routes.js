@@ -9,7 +9,7 @@ const router = Router();
 const prisma = new PrismaClient();
 
 router.post("/register", async (req, res) => {
-  const { username, firstname, lastname, email, password } = req.body;
+  const { username, firstname, lastname, email, password, role, approvedAccount } = req.body;
   try {
     if (!username)
       return res
@@ -54,6 +54,8 @@ router.post("/register", async (req, res) => {
         firstname,
         lastname,
         email,
+        role,
+        approvedAccount,
         password: hashedPassword
       }
     });
