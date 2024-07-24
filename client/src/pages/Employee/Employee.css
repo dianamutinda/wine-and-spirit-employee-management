@@ -1,6 +1,7 @@
 .item-container{
     display: flex;
     flex-wrap: wrap;
+    
 }
 .image{
     width: 20rem;
@@ -11,4 +12,39 @@
     height: 100%;
     object-fit: cover;
     display: block;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: white;
+}
+h1{
+    display: grid;
+    place-content: center;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+}
+.item-content{
+    background-color: #682632 ;
+}
+.item-content p{
+    padding: 10px;
+    color: white;
+    margin-top: -15px;
+}
+.item-content button{
+    padding: 8px;
+    width: 5rem;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    background-color:#bea79d ;
+    transition: .3s ease-in-out;
+}
+.item-content button:hover{
+    background-color:#ceb2a6 ;
 }

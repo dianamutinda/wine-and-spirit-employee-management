@@ -29,7 +29,7 @@ const Items = () => {
 
   return (
     <section>
-      <h1>Items</h1>
+      <h1>menu Items</h1>
       <div className="item-container">
       {
         items.map((item, i) => (
@@ -40,8 +40,10 @@ const Items = () => {
           <div className="image">
           <img src={item.imageurl} alt="" />
           </div>
-            <h3>{item.itemname}</h3>
-            <h3>{item.price}</h3>
+            <div className="price">
+            <h3>name: {item.itemname}</h3>
+            <h3>price: ${item.price}</h3>
+            </div>
             <p>{item.description}</p>
             <button type="submit">order</button>
           </div>
