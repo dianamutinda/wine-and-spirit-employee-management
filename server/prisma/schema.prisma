@@ -12,42 +12,43 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model user{
-  id String @id @default(uuid())
-  username String @unique
-  firstname String
-  lastname String
-  email String @unique
-  avatarUrl String?
-  role String? @default("user")
-  password String
+
+model user {
+  id              String   @id @default(uuid())
+  username        String   @unique
+  firstname       String
+  lastname        String
+  email           String   @unique
+  avatarUrl       String?
+  role            String?  @default("user")
+  password        String
   approvedAccount Boolean? @default(false)
-  createdAt DateTime @default(now())
-  items item[]
- 
+  createdAt       DateTime @default(now())
+  items           item[]
+  orders          order[]
 
   @@map("users_table")
 }
-model item{
-  itemId String @id @default(uuid())
-  itemname String
-  imageurl String
-  price Int
+
+model item {
+  itemId      String @id @default(uuid())
+  itemname    String
+  imageurl    String
+  price       Int
   description String
-  userId String
-  user user @relation(fields: [userId], references: [id])
-  orders order[]
+  userId      String
+  user        user   @relation(fields: [userId], references: [id])
 
   @@map("items_table")
 }
-model order{
-  orderId String @id @default(uuid())
-  itemname String
+
+model order {
+  orderId      String @id @default(uuid())
+  itemname     String
   ordereditems Int
-  price Int
-  // itemId String
-  userId String
-  item item @relation(fields: [userId], references: [itemId])
+  price        Int
+  userId       String
+  user         user   @relation(fields: [userId], references: [id])
 
   @@map("orders_table")
 }
