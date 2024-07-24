@@ -72,6 +72,7 @@ export const getAllUsers = async(req, res) => {
     const users = await prisma.user.findMany({
       where: { approvedAccount: true },
       select:{
+        id:true,
         username: true,
         firstname: true,
         lastname:true,
@@ -125,6 +126,18 @@ export const rejectEmployee = async(req, res) => {
       // data: { approvedAccount: false }
     })
     res.status(200).json({success:true, message:"Account rejected successully"})
+  } catch (error) {
+    res.status(500).json({success:false, message:error.message})
+  }
+}
+export const deleteEmployee = async(req, res) => {
+  const employeeId = req.params.id
+  try {
+    const deleteEmployee = await prisma.user.delete({
+      where: { id: employeeId },
+      // data: { approvedAccount: true }
+    })
+    res.status(200).json({success:true,data:deleteEmployee, message:"Employee deleted successully"})
   } catch (error) {
     res.status(500).json({success:false, message:error.message})
   }

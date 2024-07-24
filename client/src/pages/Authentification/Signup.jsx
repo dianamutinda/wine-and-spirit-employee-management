@@ -11,7 +11,7 @@ const Signup = () =>{
 
     const handleSubmit = async (formState) =>{
         try {
-            const response = await fetch(`${apiurl}/api/users/register`,{
+            const response = await fetch(`${apiurl}/api/users/request`,{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(formState)
@@ -45,9 +45,9 @@ const Signup = () =>{
         <section>
             
             <form onSubmit={formik.handleSubmit} className='form'>
-            <h1>Sign up here</h1>
+            <h1>get your account</h1>
                 <div className="form-items">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">username</label>
                     <input type="text" id="username" name='username' value={formik.values.username} onChange={formik.handleChange}/>
                 </div>
                 <div className="form-items">
@@ -74,7 +74,7 @@ const Signup = () =>{
                 
                 
                 <div className="form-items">
-                    <button type='submit'>sign up</button>
+                    <button type='submit'>request account</button>
                 </div>
                 <p className="form-text">
                     already have an account? <Link to="/signin">sign in</Link>

@@ -8,7 +8,7 @@ const Header = () => {
             <div className="cta">
                 <Link to={"/signup"}>sign up</Link>
                 <Link to={"/signin"}>sign in</Link>
-                <Link to={"/new"}>new employee</Link>
+                {/* <Link to={"/new"}>new employee</Link> */}
             </div>
         </section>
     )

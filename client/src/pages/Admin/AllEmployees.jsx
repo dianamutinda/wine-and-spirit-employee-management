@@ -1,62 +1,69 @@
-import "./Admin.css"
-import Menu from "./Menu"
-import { useEffect, useState } from "react"
-// import { useNavigate } from "react-router-dom";
+
+import "./Admin.css";
+import Menu from "./Menu";
+import { useEffect, useState } from "react";
+
 const apiurl = import.meta.env.VITE_API_URL_ROOT;
 
-const AllEmployees = () =>{
+const AllEmployees = () => {
+  const [employees, setEmployees] = useState([]);
+  const [error, setError] = useState(null);
 
-    const [employees, setEmployees] = useState([])
-    const [error, setError] = useState(false)
-    // const navigate = useNavigate()
-
-
-    useEffect(() => {
-        const fetchData = async() =>{
-            try {
-                const response = await fetch(`${apiurl}/api/users/allusers`, {
-                    credentials:"include"
-                });
-                console.log(response);
-                const data = await response.json()
-                console.log(data);
-                if (data.success) {
-                    setEmployees(data.data);
-                    // navigate("/");
-                  } else {
-                    setError('Invalid email or password');
-                  }
-    
-            } catch (error) {
-                setError(error)
-            }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${apiurl}/api/users/allusers`, {
+          credentials: "include"
+        });
+        const data = await response.json();
+        if (response.ok) {
+          setEmployees(data.data);
+        } else {
+          setError(data.message || 'Failed to fetch employees.');
         }
-        fetchData()
-    }, [])
+      } catch (error) {
+        setError(error.message || 'Failed to fetch employees.');
+      }
+    };
+    fetchData();
+  }, []);
 
-    return(
-        
-        <section className="admin">
-            <div className="menu"><Menu/></div>
-            <div className="content">
-                <h1>All approved employees</h1>
-                <div className="card-container">
-                {
-                    employees.map((employee, i) =>(
-                        
-                    <div className="card" key={i}>
-                        <h2><span className="subtittle">name:</span> {employee.firstname} {employee.lastname}</h2>
-                        <h3><span className="subtittle">username:</span>{employee.username}</h3>
-                        <h3><span className="subtittle">email:</span>{employee.email}</h3>
-                        <button className="reject">delete</button>
-                    </div>
-                
-                    ))
-                }
-                </div>
-                {error && <p className="errMsg">{error}</p>}
+  const rejectEmployee = async (id) => {
+    try {
+      const response = await fetch(`${apiurl}/api/users/delete/${id}`, {
+        method: "DELETE",
+        credentials: "include"
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setEmployees(employees.filter(employee => employee.id !== id));
+      } else {
+        setError(data.message || 'Failed to reject employee.');
+      }
+    } catch (error) {
+      setError(error.message || 'Failed to reject employee.');
+    }
+  };
+
+  return (
+    <section className="admin">
+      <div className="menu"><Menu /></div>
+      <div className="content">
+        <h1>All approved employees</h1>
+        <div className="card-container">
+          {employees.map((employee, index) => (
+            <div className="card" key={index}>
+              <h2><span className="subtitle">Name:</span> {employee.firstname} {employee.lastname}</h2>
+              <h3><span className="subtitle">Username:</span> {employee.username}</h3>
+              <h3><span className="subtitle">Email:</span> {employee.email}</h3>
+              <button className="reject" onClick={() => rejectEmployee(employee.id)}>delete</button>
             </div>
-        </section>
-    )
-}
-export default AllEmployees
+          ))}
+          {error && <p className="error-message">Error: {error}</p>}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AllEmployees;
