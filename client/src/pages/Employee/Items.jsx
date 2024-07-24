@@ -26,6 +26,8 @@ const Items = () => {
   useEffect(() => {
     fetchItems();
     }, []);
+    
+
 
   return (
     <section>
@@ -45,7 +47,7 @@ const Items = () => {
             <h3>price: ${item.price}</h3>
             </div>
             <p>{item.description}</p>
-            <button type="submit">order</button>
+            <button >order</button>
           </div>
         </div>
       

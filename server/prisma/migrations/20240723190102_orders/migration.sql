@@ -2,6 +2,8 @@
 CREATE TABLE "orders_table" (
     "orderId" TEXT NOT NULL,
     "itemname" TEXT NOT NULL,
+    "imageurl" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "ordereditems" INTEGER NOT NULL,
     "price" INTEGER NOT NULL,
     "itemId" TEXT NOT NULL,

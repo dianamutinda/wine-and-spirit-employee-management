@@ -45,7 +45,9 @@ model item {
 model order {
   orderId      String @id @default(uuid())
   itemname     String
+  imageurl     String 
   ordereditems Int
+  description  String
   price        Int
   userId       String
   user         user   @relation(fields: [userId], references: [id])

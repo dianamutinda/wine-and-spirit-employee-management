@@ -5,13 +5,15 @@ export const postOrders = async(req, res) =>{
     const user = req.user
     console.log(user);
     const userId = user.id
-    const {itemname, price, ordereditems} = req.body
+    const {itemname, price, ordereditems, imageurl, description} = req.body
     try {
         const newOrder = await prisma.order.create({
             data:{
                 itemname,
                 ordereditems,
                 price,
+                imageurl,
+                description,
                 userId
             }
         })
@@ -32,6 +34,8 @@ export const getEmployeeOrders = async (req, res) =>{
                 itemname:true,
                 ordereditems:true,
                 price:true,
+                description:true,
+                imageurl:true,
                 userId: true
             }
         })
@@ -52,6 +56,8 @@ export const getAllOrders = async(req, res) => {
                 orderId:true,
                 itemname:true,
                 ordereditems:true,
+                imageurl:true,
+                description:true,
                 price:true,
                 userId: true
             }
